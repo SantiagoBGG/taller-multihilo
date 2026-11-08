@@ -13,6 +13,6 @@ public class Taquilla implements Runnable {
         while (inventario.vender()) {
             ventas++;
         }
-        System.out.println(nombre + " vendiò " + ventas + " boletas");
+        System.out.println(nombre + " vendió " + ventas + " boletas");
     }
 }
