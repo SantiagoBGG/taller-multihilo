@@ -1,0 +1,14 @@
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Java
+*.class
+*.jar
+*.log
+hs_err_pid*
+
+# Sistema
+.DS_Store
+Thumbs.db
