@@ -1,15 +1,24 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    public static void main(String[] args) throws InterruptedException {
+        Inventario inventario = new Inventario(100);
+        Thread[] hilos = new Thread[5];
+        long inicio = System.currentTimeMillis();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        for (int i = 0 ; i < hilos.length; i++){
+            Taquilla t = new Taquilla("Taquilla " + (i+1), inventario);
+            hilos[i] = new Thread(t);
+            hilos[i].start();
         }
+        for (Thread h : hilos){
+            h.join();
+        }
+
+        System.out.println("Vendidas: " + inventario.getVendidas());
+        System.out.println("Disponibles: " + inventario.getDisponibles());
+        long fin = System.currentTimeMillis();
+        System.out.println("Tiempo(ms): " + (fin - inicio));
+
     }
 }
